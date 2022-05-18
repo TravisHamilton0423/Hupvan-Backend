@@ -1,0 +1,99 @@
+{% extends "../index.html" %}
+{% block title %}Customer-list{% endblock %}
+
+{% block container %}
+<div class="page-content-wrapper" style="height:100vh;">
+  <div class="page-content" style="height:100%;padding-top: 10rem">
+    <div class="row">
+			<div class="col-md-12">
+				<!-- BEGIN EXAMPLE TABLE PORTLET-->
+				<div class="portlet box blue">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="fa fa-edit"></i>Customer Table
+						</div>
+						<div class="tools">
+							<a href="javascript:;" class="collapse">
+							</a>
+							<a href="#portlet-config" data-toggle="modal" class="config">
+							</a>
+							<a href="javascript:;" class="reload">
+							</a>
+							<a href="javascript:;" class="remove">
+							</a>
+						</div>
+					</div>
+					<div class="portlet-body">
+
+            <div class="row">
+  						<div class="col-md-6">
+  							<div class="btn-group">
+                  <a href="/hupvan/admin/promo_code/create/">
+    								<button id="sample_editable_1_new" class="btn green">
+    								Add New <i class="fa fa-plus"></i>
+    								</button>
+                  </a>
+  							</div>
+  						</div>
+  						<div class="col-md-6">
+  						</div>
+  					</div>
+            <div style="margin-top:1rem;"></div>
+						<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+  						<thead>
+    						<tr>
+    							<th>
+    								Id
+    							</th>
+    							<th>
+    								Code
+    							</th>
+                  <th>
+                    Times
+                  </th>
+                  <th>
+                    Percent
+                  </th>
+    							<th>
+    								 Edit
+    							</th>
+    							<th>
+    								 Delete
+    							</th>
+    						</tr>
+  						</thead>
+  						<tbody>
+                {% for promo_code in promo_codes %}
+                  <tr>
+                    <td>
+                       {{ promo_code.id }}
+                    </td>
+                    <td>
+                       {{ promo_code.code }}
+                    </td>
+                    <td>
+                       {{ promo_code.times }}
+                    </td>
+                    <td>
+                       {{ promo_code.percent }}
+                    </td>
+                    <td>
+                      <a class="edit" href="/hupvan/admin/promo_code/{{promo_code.id}}/edit">
+                      Edit </a>
+                    </td>
+                    <td>
+                      <a class="delete" href="/hupvan/admin/promo_code/{{promo_code.id}}/delete">
+                      Delete </a>
+                    </td>
+                  </tr>
+                {% endfor %}
+  						</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- END EXAMPLE TABLE PORTLET-->
+			</div>
+		</div>
+  </div>
+</div>
+{% endblock %}

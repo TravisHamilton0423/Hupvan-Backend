@@ -1,0 +1,68 @@
+{% extends "../index.html" %}
+{% block title %}Customer-list{% endblock %}
+
+{% block container %}
+<div class="page-content-wrapper" style="height:100vh;">
+  <div class="page-content" style="height:100%;padding-top: 10rem">
+    <div class="row">
+			<div class="col-md-12">
+				<!-- BEGIN EXAMPLE TABLE PORTLET-->
+				<div class="portlet box blue">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="fa fa-edit"></i>Customer Table
+						</div>
+						<div class="tools">
+							<a href="javascript:;" class="collapse">
+							</a>
+							<a href="#portlet-config" data-toggle="modal" class="config">
+							</a>
+							<a href="javascript:;" class="reload">
+							</a>
+							<a href="javascript:;" class="remove">
+							</a>
+						</div>
+					</div>
+					<form class="portlet-body" action="/hupvan/admin/promo_code/{{ promo_code.id }}/edit/" method="post">
+            {% csrf_token %}
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_1">Id</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" readonly="" value={{promo_code.id}} id="form_control_id" placeholder="Placeholder...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_1">Code</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" readonly="" value={{promo_code.code}} id="form_control_code" placeholder="Placeholder...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_1">Times</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" value={{promo_code.times}} name="times" id="form_control_times" placeholder="Please enter times...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_1">Percent</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" value={{promo_code.percent}} name="percent" id="form_control_times" placeholder="Please enter times...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <input type="submit" class="btn blue" value="Save">
+					</form>
+				</div>
+				<!-- END EXAMPLE TABLE PORTLET-->
+			</div>
+		</div>
+  </div>
+</div>
+{% endblock %}

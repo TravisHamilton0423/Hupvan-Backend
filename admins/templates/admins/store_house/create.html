@@ -1,0 +1,86 @@
+{% extends "../index.html" %}
+{% block title %}Customer-list{% endblock %}
+
+{% block container %}
+<div class="page-content-wrapper" style="height:100vh;">
+  <div class="page-content" style="height:100%;padding-top: 10rem">
+    <div class="row">
+			<div class="col-md-12">
+				<!-- BEGIN EXAMPLE TABLE PORTLET-->
+				<div class="portlet box blue">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="fa fa-edit"></i>Customer Table
+						</div>
+						<div class="tools">
+							<a href="javascript:;" class="collapse">
+							</a>
+							<a href="#portlet-config" data-toggle="modal" class="config">
+							</a>
+							<a href="javascript:;" class="reload">
+							</a>
+							<a href="javascript:;" class="remove">
+							</a>
+						</div>
+					</div>
+					<form class="portlet-body" action="/hupvan/admin/store_house/create/" method="post">
+            {% csrf_token %}
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_name">Title</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" name="title" id="form_control_name" placeholder="Please enter its title...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_location">Description</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" name="description" id="form_control_location" placeholder="Please enter its description...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_rating">Size</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" name="size" id="form_control_rating" placeholder="Please enter its size...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_rating">Time</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" name="time" id="form_control_rating" placeholder="Please enter its time...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_rating">Cost</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" name="cost" id="form_control_rating" placeholder="Please enter its cost...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+							<label class="col-md-2 control-label">Storage</label>
+							<div class="col-md-10">
+								<select class="form-control" name='storage_id'>
+                  {% for storage in storages %}
+									      <option value="{{storage.id}}">{{ storage.name }}</option>
+                  {% endfor %}
+								</select>
+							</div>
+						</div>
+            <input type="submit" class="btn blue" value="Save">
+					</form>
+				</div>
+				<!-- END EXAMPLE TABLE PORTLET-->
+			</div>
+		</div>
+  </div>
+</div>
+{% endblock %}

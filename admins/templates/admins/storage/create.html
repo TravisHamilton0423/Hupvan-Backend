@@ -1,0 +1,68 @@
+{% extends "../index.html" %}
+{% block title %}Customer-list{% endblock %}
+
+{% block container %}
+<div class="page-content-wrapper" style="height:100vh;">
+  <div class="page-content" style="height:100%;padding-top: 10rem">
+    <div class="row">
+			<div class="col-md-12">
+				<!-- BEGIN EXAMPLE TABLE PORTLET-->
+				<div class="portlet box blue">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="fa fa-edit"></i>Customer Table
+						</div>
+						<div class="tools">
+							<a href="javascript:;" class="collapse">
+							</a>
+							<a href="#portlet-config" data-toggle="modal" class="config">
+							</a>
+							<a href="javascript:;" class="reload">
+							</a>
+							<a href="javascript:;" class="remove">
+							</a>
+						</div>
+					</div>
+					<form class="portlet-body" enctype="multipart/form-data" action="/hupvan/admin/storage/create/" method="post">
+            {% csrf_token %}
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_name">Name</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" name="name" id="form_control_name" placeholder="Please enter storage name...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_location">Location</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" name="location" id="form_control_location" placeholder="Please enter its location...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_rating">Rating</label>
+              <div class="col-md-10">
+                <input type="text" class="form-control" name="rating" id="form_control_rating" placeholder="Please enter its rating...">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <label class="col-md-2 control-label" for="form_control_rating">Image</label>
+              <div class="col-md-10">
+                <input type="file" class="form-control" name="image" id="form_control_image">
+                <div class="form-control-focus">
+                </div>
+              </div>
+            </div>
+            <input type="submit" class="btn blue" value="Save">
+					</form>
+				</div>
+				<!-- END EXAMPLE TABLE PORTLET-->
+			</div>
+		</div>
+  </div>
+</div>
+{% endblock %}

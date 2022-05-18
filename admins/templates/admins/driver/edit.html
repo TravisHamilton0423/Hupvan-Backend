@@ -1,0 +1,67 @@
+{% extends "../index.html" %}
+{% block title %}Customer-list{% endblock %}
+
+{% block container %}
+<div class="page-content-wrapper" style="height:100vh;">
+  <div class="page-content" style="min-height:100%;padding-top: 10rem">
+    <div class="row">
+			<div class="col-md-12">
+				<!-- BEGIN EXAMPLE TABLE PORTLET-->
+				<div class="portlet box blue">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="fa fa-edit"></i>Customer Table
+						</div>
+						<div class="tools">
+							<a href="javascript:;" class="collapse">
+							</a>
+							<a href="#portlet-config" data-toggle="modal" class="config">
+							</a>
+							<a href="javascript:;" class="reload">
+							</a>
+							<a href="javascript:;" class="remove">
+							</a>
+						</div>
+					</div>
+					<form class="portlet-body" action="/hupvan/admin/driver/{{ driver.id }}/edit/" method="post">
+            {% csrf_token %}
+            {% for key, value in driver.items %}
+              {% if key != 'approved_state' %}
+                <div class="form-group form-md-line-input">
+                  <label class="col-md-2 control-label" for="form_control_1">{{ key }}</label>
+                  <div class="col-md-10">
+                    <input type="text" class="form-control" readonly="" value="{{ value }}" id="form_control_id" placeholder="Placeholder...">
+                    <div class="form-control-focus">
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+            <div class="form-group form-md-line-input">
+							<label class="col-md-2 control-label" for="form_control_1">Approve</label>
+							<div class="col-md-10">
+								<div class="md-checkbox-list">
+									<div class="md-checkbox">
+                    {% if driver.approved_state == False %}
+										      <input type="checkbox" name="approve" id="approve" class="md-check">
+                    {% else %}
+                          <input type="checkbox" name="approve" id="approve" class="md-check" checked>
+                    {% endif %}
+										<label for="approve">
+  										<span class="inc"></span>
+  										<span class="check"></span>
+  										<span class="box"></span>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+            <input type="submit" class="btn blue" value="Save">
+					</form>
+				</div>
+				<!-- END EXAMPLE TABLE PORTLET-->
+			</div>
+		</div>
+  </div>
+</div>
+{% endblock %}
